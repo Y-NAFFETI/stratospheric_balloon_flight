@@ -1,0 +1,18 @@
+[Unit]
+Description=Start Sensor Logging Script
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/home/pi/Downloads/Dry_run/start_sensor_logging.sh
+WorkingDirectory=/home/pi/Downloads/Dry_run
+User=pi
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="PYTHONPATH=/usr/local/lib/python3.11/dist-packages" # Adjust to your Python version and library path
+Restart=on-failure
+StandardOutput=inherit
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
+
